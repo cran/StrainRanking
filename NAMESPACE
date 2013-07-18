@@ -1,0 +1,11 @@
+exportPattern("^[[:alpha:]]+")
+exportMethods(
+    "[",
+    "[<-",
+    "names",
+    "show",
+    "summary" 
+)
+exportClasses(
+    "DGobj" 
+)

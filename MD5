@@ -1,0 +1,17 @@
+bae5d8e78b13e7a4c9d9dc5f7ee40ed5 *DESCRIPTION
+88ab610453fed4fbf59eb7fe05c87a26 *NAMESPACE
+e29a7da975dac6634e3baa65cf93a195 *R/DGobj.R
+9ffe180ab311b0162ec5e77b670cafc1 *R/DGobj.rawData.R
+99b49e28f8086ad17a0de938b9f69a39 *R/DGobj.simulMechanistic.R
+ae3e12797f67d9018ef04c7e80fde1b5 *R/DGobj.simulRegression.R
+a622acb562c0b6d04ab1f786a8821a9a *R/functions.R
+22023113877aa8a3ec91f0d4e0b6cdd8 *R/rankingStrains.R
+fc616f06cc44b40ea9446dd556e19cde *data/powderymildew.RData
+41da0e39f8d9c2c9a4c47a880c9616e5 *man/DGobj-class.Rd
+781c039e0fc514f7d085efcae7727156 *man/DGobj.rawdata.Rd
+7fbdf20330a6b7e682d95d3dfe6fe9e0 *man/DGobj.simul.mechanistic.Rd
+acd8707a463967950c46d9322f8c5699 *man/DGobj.simul.regression.Rd
+d0499b67635bdc0b8b9df9080c6f38d3 *man/StrainRanking-package.Rd
+03398f308964462bc17f91f8eac954d1 *man/generation.alpha.3strains.Rd
+ddbfadd9f2bbe51ccb566b4c900240fb *man/powderymildew.Rd
+8d665ea3ef612725a0d01f9fb7d89472 *man/ranking.strains.Rd
