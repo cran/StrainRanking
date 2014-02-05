@@ -9,3 +9,4 @@ exportMethods(
 exportClasses(
     "DGobj" 
 )
+import(methods)

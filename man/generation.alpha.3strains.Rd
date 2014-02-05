@@ -20,7 +20,7 @@ generation.alpha.3strains(x)
 Matrix of positive numerics with three columns corresponding to the number of strains that are considered and with number of rows equal to the number of sites given in \code{x}. Each row of the matrix provides the parameters of the Dirichlet distribution used to draw the proportions of three strains at each site given in \code{x}. 
 }
 \references{
-Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. (2013). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. Research Report.
+Soubeyrand S., Tollenaere C., Haon-Lasportes E. & Laine A.-L. (2014). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. PLOS ONE 9(1): e86591.
 }
 \author{
 Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. 

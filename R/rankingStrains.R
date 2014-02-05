@@ -55,7 +55,7 @@ ranking.strains=function(DGobject, bw, nb.mcsimul, plots=FALSE){
 			main="Growth variable")
 		plot(x,cex=1,pch=1,asp=1,axes=F,xlab="",ylab="",main="Sampling sites")
 		points(geneticData[,1:2],pch=19)
-		for(j in 1:3){
+		for(j in 1:nbStrains){
 			zseq=seq(min(c(z,zStar)),max(c(z,zStar)),l=20)
 			hist(zStar[,j],xlim=range(zseq),breaks=zseq,xlab="",ylab="",main=paste("Coef. strain ",j))
 			abline(v=z[j],lwd=2,lty="dashed",col=2)

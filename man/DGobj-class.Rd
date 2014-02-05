@@ -34,7 +34,7 @@ Objects can be created by calls of the form \code{new("DGobj", ...)} and by call
     \item{summary}{\code{signature(object = "DGobj")}: ... }
 	 }
 }
-\references{Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. (2013). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. Research Report. }
+\references{Soubeyrand S., Tollenaere C., Haon-Lasportes E. & Laine A.-L. (2014). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. PLOS ONE 9(1): e86591.}
 \author{
 Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. 
 }

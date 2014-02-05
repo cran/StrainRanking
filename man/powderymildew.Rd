@@ -31,7 +31,7 @@ See the examples section to visualize the data set.
 }
 
 \references{
-Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. (2013). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. Research Report.
+Soubeyrand S., Tollenaere C., Haon-Lasportes E. & Laine A.-L. (2014). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. PLOS ONE 9(1): e86591.
 }
 
 \seealso{

@@ -12,12 +12,12 @@ Regression-based ranking of pathogen strains with respect to their contributions
 \tabular{ll}{
 Package: \tab StrainRanking\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2013-07-18\cr
-License: \tab What license is it under?\cr
+Version: \tab 1.1\cr
+Date: \tab 2014-02-05\cr
+License: \tab GPL (>=2.0)\cr
 Depends: \tab methods\cr
 }
-To rank pathogen strains using the method of Soubeyrand et al. (2013), create a \link{DG object} (Demographic and Genetic data set) with one of the three construction functions (\link{DGobj.rawdata}, \link{DGobj.simul.regression} and \link{DGobj.simul.mechanistic}) and apply the \link{ranking.strains} function. Other construction functions returning a DG object might be written to extend the approach proposed by Soubeyrand et al. (2013). 
+To rank pathogen strains using the method of Soubeyrand et al. (2014), create a \link{DG object} (Demographic and Genetic data set) with one of the three construction functions (\link{DGobj.rawdata}, \link{DGobj.simul.regression} and \link{DGobj.simul.mechanistic}) and apply the \link{ranking.strains} function. Other construction functions returning a DG object might be written to extend the approach proposed by Soubeyrand et al. (2014). 
 }
 \author{
 Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. 
@@ -25,7 +25,7 @@ Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L.
 Maintainer: \email{Samuel.Soubeyrand@avignon.inra.fr}
 }
 \references{
-Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. (2013). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. Research Report.
+Soubeyrand S., Tollenaere C., Haon-Lasportes E. & Laine A.-L. (2014). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. PLOS ONE 9(1): e86591.
 }
 
 \keyword{ package }
