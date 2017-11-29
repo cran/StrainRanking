@@ -9,4 +9,6 @@ exportMethods(
 exportClasses(
     "DGobj" 
 )
-import(methods)
+import(methods,stats,graphics)
+useDynLib(StrainRanking)
+export(gmcpic.test)

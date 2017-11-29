@@ -1,4 +1,3 @@
-
 ## Parameter functions used in the simulation of the regression model
 generation.alpha.3strains <- function(x) {
 	alpha=NULL
@@ -14,50 +13,46 @@ generation.alpha.3strains <- function(x) {
     l <- length(alpha)
     x <- matrix(rgamma(l * n, alpha), ncol = l, byrow = TRUE)
     sm <- x %*% rep(1, l)
-    x/as.vector(sm)
+    return(x/as.vector(sm))
 }
 
 ## Function providing the intensity of the risk of infection
 .infection.potential=function(par,r,y){
-  colSums(y*par[1]*exp(-r/par[2]))
+  return(colSums(y*par[1]*exp(-r/par[2])))
 }
 
 ## Epanechnikov smoothing kernel
-.noyau <- function(u) {
-	if (u >= 0  &  u <= 1) {
-    	K <- 1 - u^2
-  	} else {
-    	K <- 0
-  	}
-  	return(K)
+.noyau <- function(u,kernel.type) { 
+	if(kernel.type=="Linear"){
+		out= (1 - u)*  (u >= 0 & u <= 1)  
+	}
+	if(kernel.type=="Quadratic"){
+		out= (1 - u^2)*  (u >= 0 & u <= 1)  
+	}
+	if(kernel.type=="Power3"){
+		out= (1 - u^3)*  (u >= 0 & u <= 1)  
+	}
+	if(kernel.type=="Power4"){
+		out= (1 - u^4)*  (u >= 0 & u <= 1)  
+	}
+	return(out)
 }
 
-## Distance function
-.distance <- function(x1i,x2i,jeuj) {
-	d <- ((jeuj[1] - x1i) ^ 2) + ((jeuj[2] - x2i) ^ 2)
-	return(d)
-}
-
-## Function computing the weights of the kernel smoothing
-.calcul.wij <- function(jeu,j,x1i,x2i,b){
-  	if (jeu[j,1] == x1i & jeu[j,2] == x2i) {
-    	wij <- 1
-  	} else {
-    	wij <- .noyau(.distance(x1i, x2i, jeu[j,]) / b)
-  	}
-  	return(wij)
-}
+## Function computing the weights of the kernel smoothing 
+.calcul.w <- function(jeu,xy,bw,kernel.type){ 
+	dist=sqrt(outer(jeu[,1],xy[,1],"-")^2+outer(jeu[,2],xy[,2],"-")^2)
+	return(.noyau(dist/bw,kernel.type))
+} 
 
 ## Function estimating proportions of strains
-.estimation.piS <- function(jeu,x1i,x2i,s,b) {
-  	sommeWij <- 0
-  	for (j in 1:nrow(jeu)) {
-    	sommeWij <- sommeWij + .calcul.wij(jeu,j,x1i,x2i,b)
-  	}
-  	sommeWijS <- 0
-  	for (j in 1:nrow(jeu)) {
-    	sommeWijS <- sommeWijS + .calcul.wij(jeu,j,x1i,x2i,b) * jeu[j,2+s] /	sum(jeu[j,-(1:2)])
-  	}
-  	return(sommeWijS / sommeWij)
+.estimation.pS=function(jeu,xy,bw,kernel.type){
+	w=.calcul.w(jeu,xy,bw,kernel.type)
+	out=matrix(0,nrow = nrow(xy), ncol = ncol(jeu)-2)
+	prop=jeu[,3:ncol(jeu)]/rowSums(jeu[,3:ncol(jeu)])
+	for (i in 1:nrow(xy)) { 
+		out[i,]=as.numeric(colSums(w[,i]%*%prop)/sum(w[,i]))
+	}
+	return(rbind(out))
 }
-
+	
+	

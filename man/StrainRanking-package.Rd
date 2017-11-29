@@ -3,17 +3,17 @@
 \alias{StrainRanking}
 \docType{package}
 \title{
-Package for ranking pathogen strains
+Ranking of Pathogen Strains
 }
 \description{
-Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics, using demographic and genetic data sampled in the curse of the epidemics. 
+Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics, using demographic and genetic data sampled in the curse of the epidemics. This package also includes the GMCPIC test.
 }
 \details{
 \tabular{ll}{
 Package: \tab StrainRanking\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2014-02-05\cr
+Version: \tab 1.2\cr
+Date: \tab 2017-11-25\cr
 License: \tab GPL (>=2.0)\cr
 Depends: \tab methods\cr
 }
@@ -22,31 +22,12 @@ To rank pathogen strains using the method of Soubeyrand et al. (2014), create a 
 \author{
 Soubeyrand, S., Tollenaere, C., Haon-Lasportes, E. and Laine, A.-L. 
 
-Maintainer: \email{Samuel.Soubeyrand@avignon.inra.fr}
+Maintainer: \email{samuel.soubeyrand@inra.fr}
 }
 \references{
 Soubeyrand S., Tollenaere C., Haon-Lasportes E. & Laine A.-L. (2014). Regression-based ranking of pathogen strains with respect to their contributions to natural epidemics. PLOS ONE 9(1): e86591.
+
+Soubeyrand S, Garreta V, Monteil C, Suffert F, Goyeau H, Berder J, Moinard J, Fournier E, Tharreau D, Morris C, Sache I (2017). Testing differences between pathogen compositions with small samples and sparse data. Phytopathology 107: 1199-1208. http://doi.org/10.1094/PHYTO-02-17-0070-FI
 }
 
 \keyword{ package }
-\examples{
-## Application of the ranking method to a real data set
-data(powderymildew)
-DGdata=DGobj.rawdata(demographic.coord=powderymildew$demographic.coord,
- genetic.coord=powderymildew$genetic.coord,
- demographic.measures=powderymildew$demographic.measures,
- genetic.frequencies=powderymildew$genetic.frequencies)
-ranking.strains(DGobject=DGdata, bw=2, nb.mcsimul=10^3, plots=TRUE)
-
-## Application of the ranking method to a data set simulated under the 
-## mechanistic model
-DGmech=DGobj.simul.mechanistic(sqrtn=10, size1=30, size2=10, theta=c(1.5,2,3), 
-	beta=c(5,5), M=7, delta=0.2)
-ranking.strains(DGobject=DGmech, bw=2, nb.mcsimul=10^3, plots=TRUE)
-	
-## Application of the ranking method to a data set simulated under the 
-## regression model
-DGreg=DGobj.simul.regression(sqrtn=10, size1=30, size2=10, theta=c(1.5,2,3), 
- alpha.function=generation.alpha.3strains, sigma=0.1)
-ranking.strains(DGobject=DGreg, bw=2, nb.mcsimul=10^3, plots=TRUE)
-}

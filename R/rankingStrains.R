@@ -1,8 +1,12 @@
 
 
 ## Ranking method
-ranking.strains=function(DGobject, bw, nb.mcsimul, plots=FALSE){
-
+ranking.strains=function(DGobject, bw, nb.mcsimul, plots=FALSE, 
+	kernel.type="Quadratic"){
+	if(!(kernel.type%in%c("Linear","Quadratic","Power3","Power4"))){
+		kernel.type="Quadratic"
+		print("WARNING: specified kernel.type is unknown. Default Quadratic kernel is used.")
+	}
     geneticData=DGobject@genetic
     x=DGobject@demographic[,1:2]
     Z=DGobject@demographic[,3]
@@ -11,13 +15,8 @@ ranking.strains=function(DGobject, bw, nb.mcsimul, plots=FALSE){
 	N=nrow(x)
 	
 	## Estimation of strain proportions
-	pSEstimes=matrix(0,nrow = N, ncol = nbStrains)
-	for (s in 1:nbStrains) {
-		for (i in 1:N) {
-    		pSEstimes[i,s]=.estimation.piS(geneticData,x[i,1],x[i,2],s,bw)
-  		}
-	}
-
+	pSEstimes=.estimation.pS(geneticData,x,bw,kernel.type)
+	
 	## Estimation of regression coefficients
 	regression <- lm(Z ~ -1 + pSEstimes)
 	z=regression$coef
@@ -56,7 +55,7 @@ ranking.strains=function(DGobject, bw, nb.mcsimul, plots=FALSE){
 		plot(x,cex=1,pch=1,asp=1,axes=F,xlab="",ylab="",main="Sampling sites")
 		points(geneticData[,1:2],pch=19)
 		for(j in 1:nbStrains){
-			zseq=seq(min(c(z,zStar)),max(c(z,zStar)),l=20)
+			zseq=seq(min(c(z,zStar),na.rm=TRUE),max(c(z,zStar),na.rm=TRUE),l=20)
 			hist(zStar[,j],xlim=range(zseq),breaks=zseq,xlab="",ylab="",main=paste("Coef. strain ",j))
 			abline(v=z[j],lwd=2,lty="dashed",col=2)
 		}
@@ -68,5 +67,8 @@ ranking.strains=function(DGobject, bw, nb.mcsimul, plots=FALSE){
 	return(list(permutation.estimates=zStar,estimates=z,p.values=pvals))
 
 }
+
+
+
 
 
